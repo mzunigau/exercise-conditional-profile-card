@@ -30,17 +30,80 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   // reset the website body with the new html output
+
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/alesanchezr"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://github.com/alesanchezr"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/alesanchezr"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/alesanchezr"><i class="fa fa-instagram"></i></a></li>
+          <h1>   ${variables.name !== null ? variables.name : "Lucy"} ${
+    variables.lastname !== null ? variables.lastname : "Boilett"
+  }  </h1>
+          <h2>${
+            variables.role === null
+              ? "Web Developer"
+              : variables.role === "Web Developer"
+              ? "Web Developer"
+              : variables.role === "Floor Planner"
+              ? "Floor Planner"
+              : variables.role === "Technical Writter"
+              ? "Technical Writter"
+              : null
+          }</h2>
+          <h3> ${
+            variables.city === null
+              ? "Miami"
+              : variables.city === "Miami"
+              ? "Miami"
+              : variables.city === "Munich"
+              ? "Munich"
+              : variables.city === "Toronto"
+              ? "Toronto"
+              : variables.city === "Caracas"
+              ? "Caracas"
+              : null
+          }, 
+            
+            ${
+              variables.country === null
+                ? "USA"
+                : variables.country === "USA"
+                ? "USA"
+                : variables.country === "Germany"
+                ? "Germany"
+                : variables.country === "Canada"
+                ? "Canada"
+                : variables.country === "Venezuela"
+                ? "Venezuela"
+                : null
+            }</h3>
+          <ul class=${
+            variables.socialMediaPosition === "position-right"
+              ? "position-right"
+              : variables.socialMediaPosition === "position-left"
+              ? "position-left"
+              : null
+          } >
+            <li><a href=${
+              variables.twitter !== null
+                ? variables.twitter
+                : "https://twitter.com/alesanchezr"
+            }
+            
+            ><i class="fa fa-twitter"></i></a></li>
+            <li><a href=${
+              variables.github !== null
+                ? variables.github
+                : "https://github.com/alesanchezr"
+            }<i class="fa fa-github"></i></a></li>
+            <li><a href=${
+              variables.linkedin !== null
+                ? variables.linkedin
+                : "https://linkedin.com/alesanchezr"
+            }><i class="fa fa-linkedin"></i></a></li>
+            <li><a href=${
+              variables.instagram !== null
+                ? variables.instagram
+                : "https://instagram.com/alesanchezr"
+            }><i class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
